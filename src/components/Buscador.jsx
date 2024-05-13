@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Buscador = ({ data }) => {
-    const [query, setQuery] = useState('');
-    const [filteredData, setFilteredData] = useState(data);
+const Buscador = ({ info, setInfo }) => {
+    const [busqueda, setBusqueda] = useState('');
 
-    const handleSearch = e => {
-        const searchTerm = e.target.value;
-        setQuery(searchTerm);
-        const filteredResults = data.filter(item =>
-            item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    const handleBusqueda = (e) => {
+      setBusqueda(e.target.value);
+      const filteredFarmacias = info.filter((farmacias) => {
+        return Object.values(farmacias).some((value) =>
+          value.toString().toLowerCase().includes(e.target.value.toLowerCase())
         );
-        setFilteredData(filteredResults);
+      });
+      setInfo(filteredFarmacias);
     };
-
+  
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Buscar..."
-                value={query}
-                onChange={handleSearch}
-            />
-            <ul>
-                {filteredData.map(item => (
-                    <li key={item.id}>{item.nombre}</li>
-                ))}
-            </ul>
-        </div>
+      <div className="mt-4">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Buscar..."
+          value={busqueda}
+          onChange={handleBusqueda}
+        />
+      </div>
     );
 };
 

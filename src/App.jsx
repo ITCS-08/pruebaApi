@@ -1,21 +1,30 @@
-import React from 'react';
-import MiApi from './components/MiApi';
+import react from 'react';
+// import react { useState, useEffect } from 'react';
+// import MiApi from './components/MiApi';
+import LandingPage from './components/LandingPage';
+import RefApi from './components/RefApi';
+//import Input from './components/Input';
+import ComponentFetch from './components/ComponentFetch';
 
-const LandingPage = () => {
-  return (
-    <div>
-      <h1>Bienvenido a mi aplicación</h1>
-      <p>Esta es la página de inicio.</p>
-    </div>
-  );
-};
 
 const App = () => {
+
+
   return (
-    <div>
-     <LandingPage /> 
-     <MiApi />
-    </div>
+
+    <>
+      <div>
+        <LandingPage />      
+        <ComponentFetch />
+      </div>
+
+      {/* <div>
+        <RefApi />
+
+      </div> */}
+
+
+    </>
   );
 };
 
